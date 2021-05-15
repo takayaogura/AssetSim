@@ -1,8 +1,7 @@
-
 import SwiftUI
 import Charts
 
-struct ContentView: View {
+struct Calculator: View {
    
     @State var p = ""
     @State var t = ""
@@ -18,14 +17,9 @@ struct ContentView: View {
     @State var pret = 0.0
     @State var result = ""
     
-    //@State var barValues : [ChartDataEntry] = []
-    @State var barValues : [CGFloat] = []
+    @State var barValues : [ChartDataEntry] = []
 
-    
-    /*チャート部分==============================================================
     struct LineChart : UIViewRepresentable {
-        
-        @State var chartdata : [ChartDataEntry] = []
         
         typealias UIViewType = LineChartView
      
@@ -40,35 +34,17 @@ struct ContentView: View {
         func updateUIView(_ uiView: LineChartView, context: Context) {
      
         }
-                
+        
+        let values:[ChartDataEntry] = Calculator().barValues
+        
         func setData() -> LineChartData{
-            let set = LineChartDataSet(entries: ContentView().barValues, label: "My data")
+            let set = LineChartDataSet(entries: values, label: "My data")
             let data = LineChartData(dataSet: set)
             
             return data
         }
     }
-    */
     
-    struct BarView: View{
-
-        var value: CGFloat
-        var cornerRadius: CGFloat
-        
-        var body: some View {
-            VStack {
-
-                ZStack (alignment: .bottom) {
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .frame(width: 1, height: 800).foregroundColor(.black)
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .frame(width: 1, height: value).foregroundColor(.green)
-                    
-                }.padding(.bottom, 8)
-            }
-            
-        }
-    }
     
     var body: some View {
        
@@ -109,7 +85,7 @@ struct ContentView: View {
                         self.t = "5"
                     }
                     if self.r.count == 0 {
-                        self.r = "0.0"
+                        self.r = "5.0"
                     }
                     if self.year.count == 0 {
                         self.year = "10"
@@ -122,12 +98,10 @@ struct ContentView: View {
                     
                     if Double(r) == 0.0 {
                         rate = 0
-                        self.barValues = []
-                        for i in 0...Int(month) {
-                            ret = pret + tumitate * Double(Int(i))
-                            //barValues.append(ChartDataEntry(x: Double(i), y: ret))
-                            //barValues.append(ChartDataEntry(x: 55, y: 32))
-                            barValues.append(CGFloat(ret/10000))
+                        for mth in 0...Int(month) {
+                            ret = pret + tumitate * Double(Int(mth))
+                            
+                            //setArray(value: ret)
                         }
                         result = String.localizedStringWithFormat("%d", Int(ret))
 
@@ -142,13 +116,11 @@ struct ContentView: View {
                         result = String.localizedStringWithFormat("%d", Int(ret + pret))
 
                     }
-                    //LineChart().chartdata = barValues
-
+                    
                 }){
                     Text("計算する")
                 }
                 
-
                 
                 Text("予想資産額 ： \(result)円").font(.system(size: 18))
                 
@@ -158,38 +130,14 @@ struct ContentView: View {
                     self.r = ""
                     self.year = ""
                     result = ""
-                    barValues = []
+
                 }) {
                     Text("値をリセットする")
                 }
-                //LineChart().frame(height:300)
-                Text("\(barValues.count)")
-            }
-            
-            ZStack{
-                Color(.black).edgesIgnoringSafeArea(.all)
 
-                VStack{
-                    Text("Bar Charts").foregroundColor(.white)
-                        .font(.largeTitle)
-
-                    HStack(alignment: .center, spacing: 1)
-                    {
-                        ForEach(barValues, id: \.self){
-                            data in
-                            
-                            BarView(value: data, cornerRadius: CGFloat(5))
-                        }
-                    }.padding(.top, 24).animation(.default)
-                }
             }
         }
+       
     }
     
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
 }

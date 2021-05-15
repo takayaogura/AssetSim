@@ -3,23 +3,31 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57781A314486F72E793B4955 /* Pods_AssetSim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6252EB4D481C43FCE0B9A371 /* Pods_AssetSim.framework */; };
 		BA32D3C8263D12BA00BE7C2B /* AssetSimApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA32D3C7263D12BA00BE7C2B /* AssetSimApp.swift */; };
 		BA32D3CA263D12BA00BE7C2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA32D3C9263D12BA00BE7C2B /* ContentView.swift */; };
 		BA32D3CC263D12BE00BE7C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA32D3CB263D12BE00BE7C2B /* Assets.xcassets */; };
 		BA32D3CF263D12BE00BE7C2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA32D3CE263D12BE00BE7C2B /* Preview Assets.xcassets */; };
+		BA32D3D7263D133500BE7C2B /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA32D3D6263D133500BE7C2B /* Calculator.swift */; };
+		BA5D2D23263FD2D600A9E314 /* AssetChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5D2D22263FD2D500A9E314 /* AssetChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6252EB4D481C43FCE0B9A371 /* Pods_AssetSim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssetSim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7129DA5BFB5FCC32E7093311 /* Pods-AssetSim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssetSim.release.xcconfig"; path = "Target Support Files/Pods-AssetSim/Pods-AssetSim.release.xcconfig"; sourceTree = "<group>"; };
+		B5F6F08467E90BCDA13024A8 /* Pods-AssetSim.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssetSim.debug.xcconfig"; path = "Target Support Files/Pods-AssetSim/Pods-AssetSim.debug.xcconfig"; sourceTree = "<group>"; };
 		BA32D3C4263D12BA00BE7C2B /* AssetSim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssetSim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA32D3C7263D12BA00BE7C2B /* AssetSimApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSimApp.swift; sourceTree = "<group>"; };
 		BA32D3C9263D12BA00BE7C2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BA32D3CB263D12BE00BE7C2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA32D3CE263D12BE00BE7C2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA32D3D0263D12BE00BE7C2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA32D3D6263D133500BE7C2B /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		BA5D2D22263FD2D500A9E314 /* AssetChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57781A314486F72E793B4955 /* Pods_AssetSim.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		309ECE17CEFEF2879B9B2EE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6252EB4D481C43FCE0B9A371 /* Pods_AssetSim.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		851D29182EF5CB0F7C8FE0AF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B5F6F08467E90BCDA13024A8 /* Pods-AssetSim.debug.xcconfig */,
+				7129DA5BFB5FCC32E7093311 /* Pods-AssetSim.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		BA32D3BB263D12B900BE7C2B = {
 			isa = PBXGroup;
 			children = (
 				BA32D3C6263D12BA00BE7C2B /* AssetSim */,
 				BA32D3C5263D12BA00BE7C2B /* Products */,
+				851D29182EF5CB0F7C8FE0AF /* Pods */,
+				309ECE17CEFEF2879B9B2EE6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +82,8 @@
 			children = (
 				BA32D3C7263D12BA00BE7C2B /* AssetSimApp.swift */,
 				BA32D3C9263D12BA00BE7C2B /* ContentView.swift */,
+				BA5D2D22263FD2D500A9E314 /* AssetChart.swift */,
+				BA32D3D6263D133500BE7C2B /* Calculator.swift */,
 				BA32D3CB263D12BE00BE7C2B /* Assets.xcassets */,
 				BA32D3D0263D12BE00BE7C2B /* Info.plist */,
 				BA32D3CD263D12BE00BE7C2B /* Preview Content */,
@@ -76,9 +106,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA32D3D3263D12BE00BE7C2B /* Build configuration list for PBXNativeTarget "AssetSim" */;
 			buildPhases = (
+				0A0FBF6A23057D572FB11DBA /* [CP] Check Pods Manifest.lock */,
 				BA32D3C0263D12BA00BE7C2B /* Sources */,
 				BA32D3C1263D12BA00BE7C2B /* Frameworks */,
 				BA32D3C2263D12BA00BE7C2B /* Resources */,
+				E6C479027E0AA6D765B67EBF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,13 +165,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0A0FBF6A23057D572FB11DBA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AssetSim-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6C479027E0AA6D765B67EBF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AssetSim/Pods-AssetSim-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AssetSim/Pods-AssetSim-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AssetSim/Pods-AssetSim-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BA32D3C0263D12BA00BE7C2B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA5D2D23263FD2D600A9E314 /* AssetChart.swift in Sources */,
 				BA32D3CA263D12BA00BE7C2B /* ContentView.swift in Sources */,
 				BA32D3C8263D12BA00BE7C2B /* AssetSimApp.swift in Sources */,
+				BA32D3D7263D133500BE7C2B /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +340,7 @@
 		};
 		BA32D3D4263D12BE00BE7C2B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B5F6F08467E90BCDA13024A8 /* Pods-AssetSim.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -286,6 +363,7 @@
 		};
 		BA32D3D5263D12BE00BE7C2B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7129DA5BFB5FCC32E7093311 /* Pods-AssetSim.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
