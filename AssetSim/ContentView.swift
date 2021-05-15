@@ -60,7 +60,7 @@ struct ContentView: View {
 
                 ZStack (alignment: .bottom) {
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .frame(width: 1, height: 800).foregroundColor(.black)
+                        .frame(width: 1, height: 100).foregroundColor(.black)
                     RoundedRectangle(cornerRadius: cornerRadius)
                         .frame(width: 1, height: value).foregroundColor(.green)
                     
@@ -128,6 +128,7 @@ struct ContentView: View {
                             //barValues.append(ChartDataEntry(x: Double(i), y: ret))
                             //barValues.append(ChartDataEntry(x: 55, y: 32))
                             barValues.append(CGFloat(ret/10000))
+                            var valueMax 
                         }
                         result = String.localizedStringWithFormat("%d", Int(ret))
 
