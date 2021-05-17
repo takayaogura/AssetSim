@@ -1,72 +1,66 @@
-
 import SwiftUI
-import Charts
 
 struct ContentView: View {
    
+    //Textfield入力用
     @State var p = ""
     @State var t = ""
     @State var r = ""
     @State var year = ""
     
+    //入力をdoubleに変換
     @State var principle = 0.0
     @State var tumitate = 0.0
     @State var rate = 0.0
     @State var month = 0.0
     
+    //リターンと結果
+    @State var ganpon = 0.0
+    @State var valueMax = 0.0
     @State var ret = 0.0
     @State var pret = 0.0
     @State var result = ""
     
-    //@State var barValues : [ChartDataEntry] = []
+    //グラフ表示用の配列
     @State var barValues : [CGFloat] = []
+    @State var barValues2 : [CGFloat] = []
 
-    
-    /*チャート部分==============================================================
-    struct LineChart : UIViewRepresentable {
-        
-        @State var chartdata : [ChartDataEntry] = []
-        
-        typealias UIViewType = LineChartView
-     
-        func makeUIView(context: Context) -> LineChartView {
-            let lineChartView = LineChartView()
-     
-            lineChartView.data = setData()
-            
-            return lineChartView
-        }
-        
-        func updateUIView(_ uiView: LineChartView, context: Context) {
-     
-        }
-                
-        func setData() -> LineChartData{
-            let set = LineChartDataSet(entries: ContentView().barValues, label: "My data")
-            let data = LineChartData(dataSet: set)
-            
-            return data
-        }
-    }
-    */
     
     struct BarView: View{
 
         var value: CGFloat
         var cornerRadius: CGFloat
-        
+        var valueMax: CGFloat
+
         var body: some View {
             VStack {
 
                 ZStack (alignment: .bottom) {
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .frame(width: 1, height: 100).foregroundColor(.black)
+                        .frame(width: 1, height: 250).foregroundColor(.black)
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .frame(width: 1, height: value).foregroundColor(.green)
-                    
-                }.padding(.bottom, 8)
+                        .frame(width: 1, height: 250*value/valueMax).foregroundColor(.green)
+                }
             }
-            
+        }
+    }
+    
+    struct BarView2: View{
+
+        var value: CGFloat
+        var cornerRadius: CGFloat
+        var valueMax: CGFloat
+
+        var body: some View {
+            VStack {
+
+                ZStack (alignment: .bottom) {
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .frame(width: 1, height: 250).foregroundColor(.clear)
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .frame(width: 1, height: 250*value/valueMax).foregroundColor(.yellow)
+                }
+            }
         }
     }
     
@@ -109,7 +103,7 @@ struct ContentView: View {
                         self.t = "5"
                     }
                     if self.r.count == 0 {
-                        self.r = "0.0"
+                        self.r = "5.0"
                     }
                     if self.year.count == 0 {
                         self.year = "10"
@@ -118,38 +112,38 @@ struct ContentView: View {
                     month = Double(self.year)! * 12
                     tumitate = Double(self.t)! * 10000
                     principle = Double(self.p)! * 10000
-                    pret = principle
                     
+                    self.barValues = []
+                    self.barValues2 = []
+
                     if Double(r) == 0.0 {
                         rate = 0
-                        self.barValues = []
-                        for i in 0...Int(month) {
-                            ret = pret + tumitate * Double(Int(i))
-                            //barValues.append(ChartDataEntry(x: Double(i), y: ret))
-                            //barValues.append(ChartDataEntry(x: 55, y: 32))
-                            barValues.append(CGFloat(ret/10000))
-                            var valueMax 
+                        //ganpon = principle
+                        for i in 1...Int(month) {
+                            ganpon = principle + tumitate * Double(Int(i))
+                            barValues2.append(CGFloat(ganpon/10000))
+                            valueMax = ganpon/10000
                         }
-                        result = String.localizedStringWithFormat("%d", Int(ret))
+                        result = String.localizedStringWithFormat("%d", Int(ganpon))
 
                     } else {
                         rate = Double(self.r)! / 1200
-                        ret = (pow(1 + rate, month) - 1) / rate * tumitate
-                        
-                        for _ in 0..<Int(month) {
+                        pret = principle
+                        for i in 1...Int(month) {
+                            ret = (pow(1 + rate, Double(i)) - 1) / rate * tumitate
                             pret *= 1 + rate
-
+                            valueMax = (ret + pret)/10000
+                            barValues.append(CGFloat((ret + pret)/10000))
+                            
+                            ganpon = principle + tumitate * Double(Int(i))
+                            barValues2.append(CGFloat(ganpon/10000))
                         }
                         result = String.localizedStringWithFormat("%d", Int(ret + pret))
 
                     }
-                    //LineChart().chartdata = barValues
-
                 }){
                     Text("計算する")
                 }
-                
-
                 
                 Text("予想資産額 ： \(result)円").font(.system(size: 18))
                 
@@ -158,30 +152,46 @@ struct ContentView: View {
                     self.t = ""
                     self.r = ""
                     self.year = ""
+                    ganpon = 0.0
                     result = ""
                     barValues = []
+                    barValues2 = []
                 }) {
                     Text("値をリセットする")
                 }
-                //LineChart().frame(height:300)
-                Text("\(barValues.count)")
             }
-            
+            HStack {
+                Spacer()
+                Text("積立金額と運用成績")
+                Spacer()
+            }
+
             ZStack{
                 Color(.black).edgesIgnoringSafeArea(.all)
 
-                VStack{
-                    Text("Bar Charts").foregroundColor(.white)
-                        .font(.largeTitle)
+                ScrollView(.horizontal) {
+                    VStack{
 
-                    HStack(alignment: .center, spacing: 1)
-                    {
-                        ForEach(barValues, id: \.self){
-                            data in
+                        ZStack {
+                            HStack(alignment: .center, spacing: 0.5)
+                            {
+                                ForEach(barValues, id: \.self){
+                                    data in
+                                    
+                                    BarView(value: data, cornerRadius: CGFloat(0), valueMax: CGFloat(valueMax))
+                                }
+                            }
                             
-                            BarView(value: data, cornerRadius: CGFloat(5))
-                        }
-                    }.padding(.top, 24).animation(.default)
+                            HStack(alignment: .center, spacing: 0.5)
+                            {
+                                ForEach(barValues2, id: \.self){
+                                    data in
+                                    
+                                    BarView2(value: data, cornerRadius: CGFloat(5), valueMax: CGFloat(valueMax))
+                                }
+                            }
+                        }.padding(.bottom)
+                    }
                 }
             }
         }

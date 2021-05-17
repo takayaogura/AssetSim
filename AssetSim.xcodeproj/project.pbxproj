@@ -12,8 +12,6 @@
 		BA32D3CA263D12BA00BE7C2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA32D3C9263D12BA00BE7C2B /* ContentView.swift */; };
 		BA32D3CC263D12BE00BE7C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA32D3CB263D12BE00BE7C2B /* Assets.xcassets */; };
 		BA32D3CF263D12BE00BE7C2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA32D3CE263D12BE00BE7C2B /* Preview Assets.xcassets */; };
-		BA32D3D7263D133500BE7C2B /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA32D3D6263D133500BE7C2B /* Calculator.swift */; };
-		BA5D2D23263FD2D600A9E314 /* AssetChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5D2D22263FD2D500A9E314 /* AssetChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +24,6 @@
 		BA32D3CB263D12BE00BE7C2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA32D3CE263D12BE00BE7C2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA32D3D0263D12BE00BE7C2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA32D3D6263D133500BE7C2B /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
-		BA5D2D22263FD2D500A9E314 /* AssetChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +78,6 @@
 			children = (
 				BA32D3C7263D12BA00BE7C2B /* AssetSimApp.swift */,
 				BA32D3C9263D12BA00BE7C2B /* ContentView.swift */,
-				BA5D2D22263FD2D500A9E314 /* AssetChart.swift */,
-				BA32D3D6263D133500BE7C2B /* Calculator.swift */,
 				BA32D3CB263D12BE00BE7C2B /* Assets.xcassets */,
 				BA32D3D0263D12BE00BE7C2B /* Info.plist */,
 				BA32D3CD263D12BE00BE7C2B /* Preview Content */,
@@ -212,10 +206,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA5D2D23263FD2D600A9E314 /* AssetChart.swift in Sources */,
 				BA32D3CA263D12BA00BE7C2B /* ContentView.swift in Sources */,
 				BA32D3C8263D12BA00BE7C2B /* AssetSimApp.swift in Sources */,
-				BA32D3D7263D133500BE7C2B /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
